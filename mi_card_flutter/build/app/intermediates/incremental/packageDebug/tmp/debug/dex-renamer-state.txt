@@ -1,0 +1,4 @@
+#Wed May 24 13:01:25 EDT 2023
+base.0=C\:\\Users\\riaag\\Documents\\GitHub\\Flutter-Course\\mi_card_flutter\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
