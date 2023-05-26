@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.yellow,
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
                 radius: 50,
@@ -33,6 +34,56 @@ class MyApp extends StatelessWidget {
                   fontSize: 20,
                   fontFamily: "OneStroke",
                   letterSpacing: 2.5,
+                ),
+              ),
+              Container(
+                color: Colors.red,
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.phone,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      "(555)226-2627",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "SourceSansPro",
+                        fontSize: 20,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.red,
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.mail,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      "george@bananas.com",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "SourceSansPro",
+                        fontSize: 20,
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],
