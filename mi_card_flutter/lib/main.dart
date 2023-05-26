@@ -36,54 +36,51 @@ class MyApp extends StatelessWidget {
                   letterSpacing: 2.5,
                 ),
               ),
-              Container(
-                color: Colors.red,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.phone,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      "(555)226-2627",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "SourceSansPro",
-                        fontSize: 20,
-                      ),
-                    )
-                  ],
+              SizedBox(
+                height: 20,
+                width: 150,
+                child: Divider(
+                  color: Colors.red,
                 ),
               ),
-              Container(
+              Card(
                 color: Colors.red,
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.mail,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      "george@bananas.com",
-                      style: TextStyle(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: ListTile(
+                      leading: Icon(
+                        Icons.phone,
                         color: Colors.white,
-                        fontFamily: "SourceSansPro",
-                        fontSize: 20,
                       ),
-                    )
-                  ],
+                      title: Text(
+                        "(555)226-2627",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "SourceSansPro",
+                          fontSize: 22,
+                        ),
+                      )),
+                ),
+              ),
+              Card(
+                color: Colors.red,
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: ListTile(
+                      leading: Icon(
+                        Icons.email,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "george@bananas.com",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "SourceSansPro",
+                          fontSize: 22,
+                        ),
+                      )),
                 ),
               ),
             ],
