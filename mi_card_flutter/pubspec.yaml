@@ -1,0 +1,32 @@
+name: mi_card
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <=3.0.1"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - images/
+  fonts:
+    - family: ScriptMT
+      fonts:
+        - asset: fonts/scriptmt.ttf
+    - family: OneStroke
+      fonts:
+        - asset: fonts/onestroke.ttf
+    - family: SourceSansPro
+      fonts:
+        - asset: fonts/SourceSansPro-Regular.ttf
+  uses-material-design: true
