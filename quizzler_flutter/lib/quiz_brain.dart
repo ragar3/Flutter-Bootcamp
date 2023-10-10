@@ -32,7 +32,15 @@ class QuizBrain {
   ];
 
   void nextQuestion() {
-    if (_questionNumber < _questions.length - 1) _questionNumber++;
+    if (!isFinished()) _questionNumber++;
+  }
+
+  bool isFinished() {
+    return (_questionNumber == _questions.length);
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 
   String getQuestionText() {
@@ -40,7 +48,8 @@ class QuizBrain {
   }
 
   bool getQuestionAnswer() {
-    return _questions[_questionNumber].questionAnswer;
+    bool answer = _questions[_questionNumber].questionAnswer;
     nextQuestion();
+    return answer;
   }
 }
