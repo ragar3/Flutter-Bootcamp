@@ -19,19 +19,17 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     super.initState();
-    print('init');
     controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
     );
 
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+    animation = ColorTween(begin: Colors.deepPurple[50], end: Colors.white)
         .animate(controller!);
 
     controller?.forward();
     controller?.addListener(() {
       setState(() {});
-      print(animation?.value);
     });
   }
 
@@ -80,14 +78,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             ),
             RoundedButton(
               label: 'Log In',
-              color: Colors.lightBlueAccent,
+              color: Colors.purpleAccent,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             RoundedButton(
               label: 'Register',
-              color: Colors.blueAccent,
+              color: Colors.deepPurpleAccent,
               onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
               },
