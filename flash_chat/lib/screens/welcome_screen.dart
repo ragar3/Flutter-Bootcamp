@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flash_chat/rounded_button.dart';
+import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -51,12 +51,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           children: [
             Row(
               children: [
-                Container(
-                  child: Hero(
-                    tag: 'flash',
+                Hero(
+                  tag: 'flash',
+                  child: Container(
                     child: Image.asset('images/logo.png'),
+                    height: 60.0,
                   ),
-                  height: 60.0,
                 ),
                 AnimatedTextKit(
                   animatedTexts: [

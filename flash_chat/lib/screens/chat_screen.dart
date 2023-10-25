@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../components/message_stream.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = '/chat';
@@ -11,7 +14,11 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  User? currentUser;
+  final _firestore = FirebaseFirestore.instance;
+
+  final textController = TextEditingController();
+  late User currentUser;
+  String messageText = '';
 
   @override
   void initState() {
@@ -23,7 +30,9 @@ class _ChatScreenState extends State<ChatScreen> {
     try {
       final user = await _auth.currentUser;
       if (user != null) {
-        currentUser = user;
+        setState(() {
+          currentUser = user;
+        });
       }
     } catch (e) {
       print(e);
@@ -43,14 +52,21 @@ class _ChatScreenState extends State<ChatScreen> {
                 Navigator.pop(context);
               }),
         ],
-        title: Text('⚡️Chat'),
-        backgroundColor: Colors.lightBlueAccent,
+        title: Text(
+          '⚡️Chat',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.purpleAccent,
       ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            MessageStream(
+              firestore: _firestore,
+              currentUser: currentUser.email ?? '',
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
@@ -58,15 +74,21 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      controller: textController,
                       onChanged: (value) {
-                        //Do something with the user input.
+                        messageText = value;
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),
                   ),
                   TextButton(
                     onPressed: () {
-                      //Implement send functionality.
+                      textController.clear();
+                      _firestore.collection('messages').add({
+                        'text': messageText,
+                        'sender': currentUser.email,
+                        'timestamp': FieldValue.serverTimestamp(),
+                      });
                     },
                     child: Text(
                       'Send',
