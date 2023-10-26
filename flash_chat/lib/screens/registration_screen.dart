@@ -4,7 +4,7 @@ import 'package:flash_chat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../constants.dart';
+import '../components/rounded_text_field.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = '/register';
@@ -43,33 +43,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 48.0,
               ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
+              RoundedTextField(
+                hintText: "Enter your email",
                 onChanged: (value) {
                   email = value;
                 },
-                decoration: kTextFieldDecoration,
               ),
               SizedBox(
                 height: 8.0,
               ),
-              TextField(
+              RoundedTextField(
+                hintText: "Enter your password",
                 obscureText: true,
-                textAlign: TextAlign.center,
                 onChanged: (value) {
                   password = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(
-                  hintText: 'Enter your password',
-                ),
               ),
               SizedBox(
                 height: 24.0,
               ),
               RoundedButton(
                 label: 'Register',
-                color: Colors.deepPurpleAccent,
+                color: Theme.of(context).colorScheme.primary,
+                labelColor: Theme.of(context).colorScheme.onPrimary,
                 onPressed: () async {
                   setState(() {
                     showSpinner = true;
@@ -77,10 +73,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
-                    if (newUser != null) {
-                      Navigator.pushNamed(context, ChatScreen.id);
-                    }
-
+                    Navigator.pushNamed(context, ChatScreen.id);
                     setState(() {
                       showSpinner = false;
                     });

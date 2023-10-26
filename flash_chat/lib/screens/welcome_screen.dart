@@ -78,14 +78,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             ),
             RoundedButton(
               label: 'Log In',
-              color: Colors.purpleAccent,
+              color: Theme.of(context).colorScheme.primaryContainer,
+              labelColor: Theme.of(context).colorScheme.onPrimaryContainer,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             RoundedButton(
               label: 'Register',
-              color: Colors.deepPurpleAccent,
+              color: Theme.of(context).colorScheme.primary,
+              labelColor: Theme.of(context).colorScheme.onPrimary,
               onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
               },

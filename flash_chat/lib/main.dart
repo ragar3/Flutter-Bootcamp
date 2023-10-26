@@ -29,7 +29,9 @@ class FlashChat extends StatelessWidget {
       },
       theme: ThemeData(
         useMaterial3: true,
-        // colorSchemeSeed: Colors.blueGrey,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color(0xff2c6e49),
+        ),
       ),
     );
   }

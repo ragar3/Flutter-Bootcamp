@@ -32,11 +32,15 @@ class MessageBubble extends StatelessWidget {
                 text,
                 style: TextStyle(
                   fontSize: 15.0,
-                  color: isMe ? Colors.white : Colors.black54,
+                  color: isMe
+                      ? Theme.of(context).colorScheme.onPrimaryContainer
+                      : Colors.black54,
                 ),
               ),
             ),
-            color: isMe ? Colors.purpleAccent[100] : Colors.white,
+            color: isMe
+                ? Theme.of(context).colorScheme.primaryContainer
+                : Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: isMe ? Radius.circular(30.0) : Radius.zero,
               bottomLeft: Radius.circular(30.0),

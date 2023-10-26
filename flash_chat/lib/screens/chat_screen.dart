@@ -54,9 +54,9 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
         title: Text(
           '⚡️Chat',
-          style: TextStyle(color: Colors.white),
+          // style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.purpleAccent,
+        // backgroundColor: Colors.purpleAccent,
       ),
       body: SafeArea(
         child: Column(
@@ -68,7 +68,12 @@ class _ChatScreenState extends State<ChatScreen> {
               currentUser: currentUser.email ?? '',
             ),
             Container(
-              decoration: kMessageContainerDecoration,
+              decoration: BoxDecoration(
+                  border: Border(
+                      top: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+                width: 2.0,
+              ))),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[

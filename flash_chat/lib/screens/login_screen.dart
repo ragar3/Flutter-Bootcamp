@@ -3,7 +3,7 @@ import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../constants.dart';
+import '../components/rounded_text_field.dart';
 import 'chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -43,33 +43,29 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 48.0,
               ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
+              RoundedTextField(
+                hintText: "Enter your email",
                 onChanged: (value) {
                   email = value;
                 },
-                decoration: kTextFieldDecoration,
               ),
               SizedBox(
                 height: 8.0,
               ),
-              TextField(
+              RoundedTextField(
+                hintText: "Enter your password",
                 obscureText: true,
-                textAlign: TextAlign.center,
                 onChanged: (value) {
                   password = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(
-                  hintText: 'Enter your password',
-                ),
               ),
               SizedBox(
                 height: 24.0,
               ),
               RoundedButton(
                 label: 'Log In',
-                color: Colors.purpleAccent,
+                color: Theme.of(context).colorScheme.primaryContainer,
+                labelColor: Theme.of(context).colorScheme.onPrimaryContainer,
                 onPressed: () async {
                   setState(() {
                     showSpinner = true;
