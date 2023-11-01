@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey/models/task_data.dart';
 
 class NewTaskScreen extends StatelessWidget {
-  final void Function(String) addTaskCallback;
-
-  NewTaskScreen(this.addTaskCallback);
-
   @override
   Widget build(BuildContext context) {
     String taskText = '';
-    final TextEditingController taskController = TextEditingController();
 
     return SingleChildScrollView(
       child: Padding(
@@ -42,7 +39,6 @@ class NewTaskScreen extends StatelessWidget {
                       BorderSide(color: Colors.lightBlueAccent, width: 2),
                 ),
               ),
-              controller: taskController,
               onChanged: (value) {
                 taskText = value;
               },
@@ -52,8 +48,8 @@ class NewTaskScreen extends StatelessWidget {
                   backgroundColor:
                       MaterialStateProperty.all(Colors.lightBlueAccent)),
               onPressed: () {
-                addTaskCallback(taskText);
-                taskController.clear();
+                Provider.of<TaskData>(context, listen: false).addTask(taskText);
+                Navigator.pop(context);
               },
               child: const Text('Add'),
             ),

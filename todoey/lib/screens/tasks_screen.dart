@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../components/task_list.dart';
-import '../models/task.dart';
+import '../models/task_data.dart';
 import 'new_task_screen.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task('task 1'),
-    Task('task 2'),
-  ];
-
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +37,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     ),
                   ),
                   Text(
-                    '${tasks.length} Tasks',
+                    '${Provider.of<TaskData>(context).taskCount} Tasks',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -66,7 +57,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(40),
-                  child: TaskList(tasks),
+                  child: TaskList(),
                 ),
               ),
             ),
@@ -81,12 +72,7 @@ class _TasksScreenState extends State<TasksScreen> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (context) => NewTaskScreen((String taskText) {
-              setState(() {
-                tasks.add(Task(taskText));
-              });
-              Navigator.pop(context);
-            }),
+            builder: (context) => NewTaskScreen(),
             isScrollControlled: true,
           );
         },
